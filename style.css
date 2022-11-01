@@ -102,9 +102,7 @@ body{
 .item2{
     height:300px;
     flex: 30%;
-    padding-top: 70px;
     position: relative;
-    bottom:40px;
 }
 
 .player{
