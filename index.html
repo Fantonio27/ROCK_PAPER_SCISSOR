@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bato Bato Pick</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="column1"></div>
+        <div class="column2">
+            <p class="title">Bato Bato Pick Game</p>
+            <div class="row" id="row">
+                <div class="item">
+                    <div class="rock" id="rock1">
+                        <img src="pic/rock.png" class="pic1">
+                        <input type="radio" id = "rock" value="1" hidden>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="paper" id="paper1">
+                        <img src="pic/paper.png" class="pic2">
+                        <input type="radio"  id = "paper" value="1" hidden>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="scissor" id="scissor1">
+                        <img src="pic/scissor.png" class="pic3">
+                        <input type="radio"  id = "scissor" value="1" hidden>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row2" id="row2">
+                <div class="item2">
+                    <div class="playerpick" id="playerpick">  
+                        <img src="" class="pic1" id ="playerpic">
+                        <input type="radio" id = "" hidden >
+                    </div>
+                    <p class="player">You</p>
+                </div>
+                <div class="item2">
+                    <p class="winlose" id ="winlose"></p>
+                    <p class="score">Score:<p class="score" id = "score"></p>
+                </div>
+                <div class="item2">
+                    <div class="compick" id="compick">
+                        <img src="" class="pic3" id ="compic">
+                        <input type="radio"  id = "" hidden>
+                    </div>
+                    <p class="player">Computer</p>
+                </div>
+            </div>
+            
+            <input type="button" class="enterbtn" value="Pick" id="pick">
+            <input type="button" class="againbtn" value="Play Again" id="again">
+        </div>
+        <div class="column3"></div>
+    </div>
+</body>
+</html>
+
+<script>
+    const rock = "rock";
+    const paper = "paper";
+    const scissor = "scissor";
+    let score = 0;
+
+    document.getElementById("rock1").addEventListener("click", function() { check(rock, paper, scissor);});
+    document.getElementById("paper1").addEventListener("click", function() { check(paper , rock , scissor);});
+    document.getElementById("scissor1").addEventListener("click", function() { check(scissor , paper, rock);});
+
+    document.getElementById("pick").addEventListener("click", function() { pick(rock , paper, scissor);});
+
+    document.getElementById("again").addEventListener("click", function() { playagain(rock , paper, scissor);});
+
+    function check(a , b, c){
+        document.getElementById(a).checked = true;
+        document.getElementById(b).checked = false;
+        document.getElementById(c).checked = false;
+        document.getElementById(a + "1").style.backgroundColor = "#bee3db";
+        document.getElementById(b + "1").style.backgroundColor = "";
+        document.getElementById(c + "1").style.backgroundColor = "";
+
+    }
+
+    function pick(a , b , c){
+
+        if (document.getElementById(a).checked === false && 
+            document.getElementById(b).checked === false && 
+            document.getElementById(c).checked === false){
+
+            alert("Please Pick");
+        }else{
+
+            let i = Math.floor(Math.random() * 6) + 1;
+            let no = 0;
+
+            if (document.getElementById(a).checked){
+                no = 1;
+                document.getElementById("playerpic").src ="pic/rock.png";
+            }else if  (document.getElementById(b).checked){
+                no = 2;
+                document.getElementById("playerpic").src ="pic/paper.png";
+            }else if  (document.getElementById(c).checked){
+                no = 3;
+                document.getElementById("playerpic").src ="pic/scissor.png";
+            }
+        
+            /* i = 1 rock       no = 1 rock
+            i = 2 paper      no = 2 paper
+            i = 3 scissor    no = 3 scissor
+
+            i = computer     no = player
+            */
+
+            if (i == 1 || i == 4){
+                document.getElementById("compic").src ="pic/rock.png";
+            } else if (i == 2 || i == 5 ){
+                document.getElementById("compic").src ="pic/paper.png";
+            }else if (i == 3 || i == 6){
+                document.getElementById("compic").src ="pic/scissor.png";
+            } 
+
+            //sa may no = 1
+            if (no == 1 && i == 1 || i == 4){
+                document.getElementById("winlose").innerHTML =  "Draw";
+            }else if (no == 1 && i == 2 || i == 5){
+                document.getElementById("winlose").innerHTML ="You Lose";
+            }else if (no == 1 && i == 3 || i == 6){
+                document.getElementById("winlose").innerHTML ="You Win";
+                score++;
+
+            //sa may no = 2
+            }else if (no == 2 && i == 1 || i == 4){  
+                document.getElementById("winlose").innerHTML ="You Win";
+                score++;
+
+            }else if (no == 2 && i == 2 || i == 5){
+                document.getElementById("winlose").innerHTML ="Draw";
+            }else if (no == 2 && i == 3 || i == 6){
+                document.getElementById("winlose").innerHTML ="You Lose";
+            
+            //sa may no = 3
+            }else if (no == 3 && i == 1 || i == 4){    
+                document.getElementById("winlose").innerHTML ="You Lose";
+            }else if (no == 3 && i == 2 || i == 5){
+                document.getElementById("winlose").innerHTML ="You Win";
+                score++;
+
+            }else if (no == 3 && i == 3 || i == 6){
+                document.getElementById("winlose").innerHTML ="Draw";
+            }
+
+            document.getElementById("score").innerHTML = score;
+            document.getElementById("row").style.display = "none";
+            document.getElementById("row2").style.display = "flex";
+            document.getElementById("pick").style.display = "none";
+            document.getElementById("again").style.display = "block";
+        }
+    }
+
+    function playagain(a ,b ,c){
+        document.getElementById("row").style.display = "flex";
+        document.getElementById("row2").style.display = "none";
+        document.getElementById("pick").style.display = "block";
+        document.getElementById("again").style.display = "none";
+
+        document.getElementById(a).checked = false;
+        document.getElementById(b).checked = false;
+        document.getElementById(c).checked = false;
+        document.getElementById(a + "1").style.backgroundColor = "";
+        document.getElementById(b + "1").style.backgroundColor = "";
+        document.getElementById(c + "1").style.backgroundColor = "";
+    }
+
+</script>

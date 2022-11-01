@@ -1,0 +1,128 @@
+body{
+   background-image: linear-gradient(-225deg, #CBBACC 0%, #2580B3 100%);
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+
+}
+
+.container{
+  display: flex;
+  flex-direction: row;
+}
+
+.column1 , .column3{
+    flex: 20%
+}
+
+.column2{
+    flex:60%;
+    padding: 110px 30px 0px;
+    text-align: center;
+}
+
+.title{
+    font-size: 70px;
+    color:#ffffff;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+   padding: 25px;
+    text-align: center;
+}
+
+.item{
+    height:350px;
+    flex: 30%;
+}
+
+.rock, .paper, .scissor , .playerpick , .compick{
+    height: 230px;
+    width: 230px;
+    margin: auto;
+    border-radius: 50%;
+    border: 2px solid #495057;
+    cursor: pointer;
+}
+
+.playerpick , .compick{
+    background-color: #bee3db;
+}
+
+.pic1, .pic2 , .pic3{
+    height: 150px;
+    width: 150px;
+    object-fit: contain;
+    margin: 40px;
+   
+}
+
+.rock:hover, .paper:hover , .scissor:hover{
+    background-color: #bee3db;
+}
+
+.pic2{
+    width: 160px;
+    height: 160px;
+    margin: 35px ;
+}
+
+.pic3{
+    width: 170px;
+    height: 170px;
+    margin: 35px ;
+}
+
+.row , .row2{
+    display: flex;
+    flex-direction: row; 
+}
+
+.enterbtn , .againbtn{
+    height: 50px;
+    width: 200px;
+    border-radius: 30px;
+    border:1px solid white;
+    background-image: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 2px;
+    margin: auto;
+}
+
+.againbtn{
+    display: none;
+}
+
+.row2{
+    display: none;
+}
+
+.item2{
+    height:300px;
+    flex: 30%;
+    padding-top: 70px;
+    position: relative;
+    bottom:40px;
+}
+
+.player{
+    font-size: 30px;
+    margin: 20px auto;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+}
+
+.winlose, .score{
+    font-size: 70px;
+    font-weight: bold;
+    font-family: 'Rajdhani', sans-serif;
+    background-color: whitesmoke;
+}
+
+.score{
+    font-size: 22px;
+    font-weight: lighter;
+    background-color: rgb(0, 0, 0, 0.0);
+}
